@@ -1,0 +1,42 @@
+[{
+   "title": "Popular Books",
+   "horizontal": true,
+   "data": [
+      {
+         "title": "Fashionopolis",
+         "artist": "Dana Thomas",
+         "image": "0"
+      },
+      {
+         "title": "Chanel",
+         "artist": "Patrick Mauriès",
+         "image": "1"
+      },
+      {
+         "title": "Calligraphy",
+         "artist": "June & Lucy",
+         "image": "2"
+      }
+   ]
+},{
+   "title": "Newest",
+   "horizontal": true,
+   "data": [
+      {
+         "title": "Yves Saint Laurent",
+         "artist": "Suzy Menkes",
+         "image": "3"
+      },
+      {
+         "title": "The Book of Signs",
+         "artist": "Rudolf Koch",
+         "image": "4"
+      },
+      {
+         "title": "Stitched Up",
+         "artist": "Tansy E. Hoskins",
+         "image": "5"
+      }
+   ]
+}
+]
