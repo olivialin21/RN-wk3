@@ -19,8 +19,6 @@ import DisplaySettingScreen from '../screens/DisplaySettingScreen';
 import AccountScreen from '../screens/AccountScreen';
 import MyTheme from '../Theme';
 
-import albumData from "../json/albums.json";
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();

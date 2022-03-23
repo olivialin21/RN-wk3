@@ -23,6 +23,10 @@ const HotAlbumDetail = ({album, navigation}) => {
        </View>
      </View> 
      <View style={styles.headerContainerStyle}>
+       {album.starDisplay ?
+        <Image source={require('../images/icon_star_filled.png')}/>
+       : null}
+
        <Text style={styles.headerTitleStyle}>{album.title}</Text>
        <Text style={styles.headerContentStyle}>{album.artist}</Text>
      </View>
@@ -43,6 +47,8 @@ const styles = StyleSheet.create({
     width: 130,
   },
   headerTitleStyle: {
+    color: '#000',
+    marginTop: 5,
     fontSize: 12,
     fontWeight: 'bold',
   },
