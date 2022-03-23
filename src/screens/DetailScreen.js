@@ -9,7 +9,7 @@ const DetailScreen = ({ route }) => {
     // light_star,
     // dark_star,
     image,
-    descriptions
+    description
   } = route.params;
   return (
     <ScrollView style={{backgroundColor: '#fff'}}>
@@ -39,7 +39,7 @@ const DetailScreen = ({ route }) => {
           marginBottom:28,
           textAlign:'center',
         }}
-        >{descriptions}
+        >{description}
       </Text>
       <TouchableOpacity style={styles.button}>
       <Text style={styles.buttonText}>BUY NOW FOR $46.99</Text>

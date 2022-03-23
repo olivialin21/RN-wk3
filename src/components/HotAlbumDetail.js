@@ -7,19 +7,19 @@ const HotAlbumDetail = ({album, navigation}) => {
     <View style={{flexDirection: 'column'}}>
      <View style={styles.cardContainerStyle}>
        <View style={styles.cardSectionStyle}>
-         <Pressable 
-           onPress={() => {navigation.navigate('Detail', album)}}
-         >
+        <Pressable 
+          onPress={() => {navigation.navigate('Detail', album)}}
+        >
          <Image
            style={styles.imageStyle}
            source={{uri: album.image}}
          />
-         </Pressable>
-          {/* <StarMaker 
-          star={album.star} 
-          light_star={album.light_star}
-          dark_star={album.dark_star}  
-          /> */}
+        </Pressable>
+        {/* <StarMaker 
+        star={album.star} 
+        light_star={album.light_star}
+        dark_star={album.dark_star}  
+        /> */}
        </View>
      </View> 
      <View style={styles.headerContainerStyle}>
