@@ -3,7 +3,7 @@ import { Center } from "native-base";
 
 const SettingsScreen = ({ navigation }) => {
     return (
-        <Center>Setting</Center>
+        <Center flex={1}>Setting</Center>
     );
 };
 

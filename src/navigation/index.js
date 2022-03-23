@@ -1,33 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavigationContainer, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+// import {
+//   createDrawerNavigator,
+//   DrawerContentScrollView,
+//   DrawerItemList,
+//   DrawerItem,
+// } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { Divider, Image, Input, HStack, Text } from 'native-base';
+import { Divider, Image, Input, HStack, Text, Pressable } from 'native-base';
 
 import AlbumScreen from '../screens/AlbumScreen';
 import DetailScreen from '../screens/DetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DisplaySettingScreen from '../screens/DisplaySettingScreen';
+import AccountScreen from '../screens/AccountScreen';
 import MyTheme from '../Theme';
 
 import albumData from "../json/albums.json";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
 
 const Navigation = () => {
   return (
     <NavigationContainer theme={MyTheme}>
-      <MyDrawer />
+      {/* <MyDrawer /> */}
+      <MyTabs/>
     </NavigationContainer>
   );
 }
@@ -40,28 +42,13 @@ const CustomDrawerContent = (props) => {
       contentContainerStyle={{ paddingTop: 0 }}
     >
       <Image
-        h={250}
-        source={require("../images/drawerTile.jpg")}
+        h={10}
+        // w={48}
+        source={require("../images/img_avatar.png")}
         alt='albumImage'
       />
       <DrawerItemList {...props} />
       <Divider my="2"/>
-      <DrawerItem 
-        label="Help"
-        activeBackgroundColor={colors.primary100}
-        activeTintColor={colors.primary700}
-        inactiveTintColor={colors.light500}
-        labelStyle={ {fontSize: 18, fontWeight: '400'} }
-        icon={({ color }) => (
-          <MaterialCommunityIcons name="account-question" color={color} size={26} />
-        )}
-        onPress={()=>alert('Need Help ...')}
-      />
-      <HStack pl="4" alignItems="center">
-        <MaterialCommunityIcons name="magnify" color={colors.light500} size={26} />
-        <Input mx="3" fontSize={18} placeholder="Input Search Text" flex={1} />
-      </HStack>
-
     </DrawerContentScrollView>
   );
 }
@@ -81,6 +68,7 @@ const MyDrawer = () => {
       }}
       drawerContent={props => <CustomDrawerContent {...props} />}
     >
+      
       <Drawer.Screen
         name="HomeStack"
         component={HomeStack}
@@ -89,6 +77,17 @@ const MyDrawer = () => {
           drawerLabel: "Home",
           drawerIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="AccountStack"
+        component={AccountStack}
+        options={{
+          headerShown: false,
+          drawerLabel: "Account",
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account-circle" color={color} size={26} />
           ),
         }}
       />
@@ -114,13 +113,12 @@ const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarInactiveTintColor: colors.light500,
-        tabBarActiveTintColor: colors.primary700,
-        // headerShown: false
+        tabBarActiveTintColor: '#6200EE',
+        headerShown: false
       }}
     >
-      <Tab.Screen
-        name="HomeStack"
+      <Tab.Screen 
+        name="HomeStack" 
         component={HomeStack}
         options={{
           headerShown: false,
@@ -130,18 +128,25 @@ const MyTabs = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name="SettingsStack"
-        component={SettingsStack}
+      <Tab.Screen 
+        name="Stack2" 
+        component={HomeStack} 
         options={{
           headerShown: false,
-          title: "Settings",
-          headerTitleStyle: {
-            fontWeight: '400',
-            fontSize: 20
-          },
+          title: "Wishlist",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cog" color={color} size={26} />
+            <MaterialCommunityIcons name="bookmark" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen 
+        name="Stack3" 
+        component={HomeStack} 
+        options={{
+          headerShown: false,
+          title: "My books",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="book-open" color={color} size={26} />
           ),
         }}
       />
@@ -165,7 +170,7 @@ const SettingsStack = ({ navigation }) => {
             <MaterialCommunityIcons
               name={'menu'}
               size={20}
-              onPress={() => navigation.openDrawer()}
+              // onPress={() => navigation.openDrawer()}
               style={{ marginRight: 20 }}
             />
           ),
@@ -187,6 +192,10 @@ const SettingsStack = ({ navigation }) => {
 }
 
 const HomeStack = ({ navigation }) => {
+  const [toggle, setToggle] = useState(true);
+  const toggleFunction = () => {
+      setToggle(!toggle);
+  };
 
   return (
     <Stack.Navigator
@@ -198,7 +207,72 @@ const HomeStack = ({ navigation }) => {
         name="Home"
         component={AlbumScreen}
         options={{
-          title: albumData.albumTitle,
+          title: "",
+          headerShadowVisible:false,
+          headerTitleStyle: {
+            elevation: 0,
+            backgroundColor:"#fff",
+            shadowOpacity: 0,
+            shadowOffset:0,
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'menu'}
+              size={28}
+              // onPress={() => navigation.openDrawer()}
+            />
+          ),
+          headerRight: () => (
+            <MaterialCommunityIcons
+              name={'magnify'}
+              size={28}
+              // style={{ marginRight: 8 }}
+            />
+          )
+        }}
+      />
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={({ route }) => ({
+          title: "",
+          headerStyle: {
+            backgroundColor: '#fff',
+          },
+          headerShadowVisible:false,
+          headerTintColor: '#000',
+          headerTitleStyle: {
+            fontWeight: '400',
+            fontSize: 20
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'chevron-left'}
+              size={30}
+              onPress={() =>navigation.goBack(null)}
+              style={{ marginLeft: 8 }}
+            />
+          ),
+          headerRight: () => (
+            <Pressable onPress={() => toggleFunction()}>
+            {toggle ? <MaterialCommunityIcons name={'bookmark-outline'} color={'black'} size={26} />:
+                      <MaterialCommunityIcons name={'bookmark'} color={'#6200EE'} size={26} />}
+            </Pressable>
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+}
+
+const AccountStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          title: "Account",
           headerTitleStyle: {
             fontWeight: '400',
             fontSize: 20
@@ -207,26 +281,11 @@ const HomeStack = ({ navigation }) => {
             <MaterialCommunityIcons
               name={'menu'}
               size={20}
-              onPress={() => navigation.openDrawer()}
+              // onPress={() => navigation.openDrawer()}
               style={{ marginRight: 20 }}
             />
           ),
         }}
-      />
-      <Stack.Screen
-        name="Detail"
-        component={DetailScreen}
-        options={({ route }) => ({
-          title: route.params.title,
-          headerStyle: {
-            backgroundColor: '#fff',
-          },
-          headerTintColor: '#000',
-          headerTitleStyle: {
-            fontWeight: '400',
-            fontSize: 20
-          },
-        })}
       />
     </Stack.Navigator>
   );
