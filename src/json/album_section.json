@@ -5,17 +5,17 @@
       {
          "title": "Fashionopolis",
          "artist": "Dana Thomas",
-         "image": "0"
+         "image": "https://github.com/olivialin21/RN-wk3/blob/main/src/images/img_book_fashinopolis.png?raw=true"
       },
       {
          "title": "Chanel",
          "artist": "Patrick Mauriès",
-         "image": "1"
+         "image": "https://github.com/olivialin21/RN-wk3/blob/main/src/images/img_book_chanel.png?raw=true"
       },
       {
          "title": "Calligraphy",
          "artist": "June & Lucy",
-         "image": "2"
+         "image": "https://github.com/olivialin21/RN-wk3/blob/main/src/images/img_book_calligraphy.png?raw=true"
       }
    ]
 },{
@@ -25,17 +25,17 @@
       {
          "title": "Yves Saint Laurent",
          "artist": "Suzy Menkes",
-         "image": "3"
+         "image": "https://github.com/olivialin21/RN-wk3/blob/main/src/images/img_book_ysl.png?raw=true"
       },
       {
          "title": "The Book of Signs",
          "artist": "Rudolf Koch",
-         "image": "4"
+         "image": "https://github.com/olivialin21/RN-wk3/blob/main/src/images/img_book_tbos.png?raw=true"
       },
       {
          "title": "Stitched Up",
          "artist": "Tansy E. Hoskins",
-         "image": "5"
+         "image": "https://github.com/olivialin21/RN-wk3/blob/main/src/images/img_book_stitchedup.png?raw=true"
       }
    ]
 }
