@@ -2,31 +2,31 @@ import React from "react";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 
 const HotAlbumDetail = ({album, navigation}) => {
+  console.log(album);
   return (
-    <Text>Test</Text>
-  //   <View style={{flexDirection: 'column'}}>
-  //    <View style={styles.cardContainerStyle}>
-  //      <View style={styles.cardSectionStyle}>
-  //        <Pressable 
-  //          onPress={() => {navigation.navigate('Detail', album)}}
-  //        >
-  //        <Image
-  //          style={styles.imageStyle}
-  //          source={{uri: album.image}}
-  //        />
-  //        </Pressable>
-  //         {/* <StarMaker 
-  //         star={album.star} 
-  //         light_star={album.light_star}
-  //         dark_star={album.dark_star}  
-  //         /> */}
-  //      </View>
-  //    </View> 
-  //    <View style={styles.headerContainerStyle}>
-  //      <Text style={styles.headerTitleStyle}>{album.title}</Text>
-  //      <Text style={styles.headerContentStyle}>{album.artist}</Text>
-  //    </View>
-  //  </View>
+    <View style={{flexDirection: 'column'}}>
+     <View style={styles.cardContainerStyle}>
+       <View style={styles.cardSectionStyle}>
+         <Pressable 
+           onPress={() => {navigation.navigate('Detail', album)}}
+         >
+         <Image
+           style={styles.imageStyle}
+           source={{uri: album.image}}
+         />
+         </Pressable>
+          {/* <StarMaker 
+          star={album.star} 
+          light_star={album.light_star}
+          dark_star={album.dark_star}  
+          /> */}
+       </View>
+     </View> 
+     <View style={styles.headerContainerStyle}>
+       <Text style={styles.headerTitleStyle}>{album.title}</Text>
+       <Text style={styles.headerContentStyle}>{album.artist}</Text>
+     </View>
+   </View>
   )
 };
 
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   imageStyle: {
-    height: 130,
-    width: 130,
+    height: 200,
+    width: 140,
   }
 });
 

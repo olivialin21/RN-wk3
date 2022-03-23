@@ -1,16 +1,14 @@
 import React from "react";
-import { Box } from "native-base";
-import HotAlbumList from "../components/HotAlbumList";
-// import albumData from "../json/albums.json";
+import { View } from "react-native";
+import AlbumList from "../components/AlbumList";
 
 const AlbumScreen = ({ navigation }) => {
   return (
-    <Box>
-      <HotAlbumList 
-        // list={albumData.albumList}
+    <View style={{flex: 1,backgroundColor:'#fff'}}>
+      <AlbumList 
         navigation={navigation}
       />
-    </Box>
+    </View>
   );
 };
 
