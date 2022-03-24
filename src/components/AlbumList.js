@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, FlatList, SectionList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import HotAlbumDetail from "./HotAlbumDetail";
 import sections from "../json/album_section.json"
 
@@ -22,7 +22,7 @@ const AlbumList = ({ navigation }) => {
   // };
 
   return (
-    <>
+    <View style={styles.section}>
       <Text style={styles.sectionHeader}>
         {sections[0].title}
       </Text>
@@ -31,7 +31,7 @@ const AlbumList = ({ navigation }) => {
         data={sections[0].data}
         renderItem={({item}) => <HotAlbumDetail album={item} navigation={navigation} />}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 10 }}
+        contentContainerStyle={{ paddingHorizontal: 16, paddingLeft: 0 }}
         keyExtractor={item => item.title}
       />
       <Text style={styles.sectionHeader}>
@@ -42,29 +42,21 @@ const AlbumList = ({ navigation }) => {
         data={sections[1].data}
         renderItem={({item}) => <HotAlbumDetail album={item} navigation={navigation} />}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 10 }}
+        contentContainerStyle={{ paddingHorizontal: 16, paddingLeft: 0 }}
         keyExtractor={item => item.title}
       />
-    </>
-    // <SectionList
-    //   sections={sections}
-    //   contentContainerStyle={{ paddingHorizontal: 10 }}
-    //   stickySectionHeadersEnabled={false}
-    //   showsHorizontalScrollIndicator={false}
-    //   renderSectionHeader={renderSectionHeader}
-    //   renderItem={renderItem}
-    //   keyExtractor={item => item.title}
-    // />    
+    </View>
   );  
 };
 
 const styles = StyleSheet.create({
+  section: {
+    marginLeft: 20,
+  },
   sectionHeader: {
     fontWeight: 'bold',
     fontSize: 24,
-    paddingTop: 8,
-    paddingBottom: 5,
-    paddingLeft: 10,
+    paddingTop: 8
   }
 })
 

@@ -17,6 +17,8 @@ import DetailScreen from '../screens/DetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DisplaySettingScreen from '../screens/DisplaySettingScreen';
 import AccountScreen from '../screens/AccountScreen';
+import WishlistScreen from '../screens/WishlistScreen';
+import MyBooksScreen from '../screens/MyBooksScreen';
 import MyTheme from '../Theme';
 
 const Stack = createNativeStackNavigator();
@@ -66,7 +68,6 @@ const MyDrawer = () => {
       }}
       drawerContent={props => <CustomDrawerContent {...props} />}
     >
-      
       <Drawer.Screen
         name="HomeStack"
         component={HomeStack}
@@ -127,8 +128,8 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen 
-        name="Stack2" 
-        component={HomeStack} 
+        name="WishlistStack" 
+        component={WishlistStack} 
         options={{
           headerShown: false,
           title: "Wishlist",
@@ -138,8 +139,8 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen 
-        name="Stack3" 
-        component={HomeStack} 
+        name="MyBooksStack" 
+        component={MyBooksStack} 
         options={{
           headerShown: false,
           title: "My books",
@@ -283,6 +284,70 @@ const AccountStack = ({ navigation }) => {
               style={{ marginRight: 20 }}
             />
           ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+const WishlistStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Wishlist"
+        component={WishlistScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {
+            fontWeight: '400',
+            fontSize: 20
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'menu'}
+              size={28}
+              // onPress={() => navigation.openDrawer()}
+            />
+          ),
+          headerRight: () => (
+            <MaterialCommunityIcons
+              name={'magnify'}
+              size={28}
+              // style={{ marginRight: 8 }}
+            />
+          )
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+const MyBooksStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="MyBooks"
+        component={MyBooksScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {
+            fontWeight: '400',
+            fontSize: 20
+          },
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              name={'menu'}
+              size={28}
+              // onPress={() => navigation.openDrawer()}
+            />
+          ),
+          headerRight: () => (
+            <MaterialCommunityIcons
+              name={'magnify'}
+              size={28}
+              // style={{ marginRight: 8 }}
+            />
+          )
         }}
       />
     </Stack.Navigator>
